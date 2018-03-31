@@ -1,0 +1,25 @@
+{
+  "name": "shri-architecture",
+  "version": "0.1.0",
+  "description": "Задание по архитектуре для ШРИ-2018",
+  "license": "DWYD",
+  "main": "bundle.js",
+  "scripts": {
+    "server": "http-server",
+    "start:dev": "webpack-dev-server --mode=development",
+    "build": "webpack --mode=development"
+  },
+  "author": "",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1"
+  }
+}
