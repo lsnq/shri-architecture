@@ -62,7 +62,7 @@ class SenderModel extends Model {
         this.button = document.querySelector('.view-stub__apply');
         this.button.addEventListener('click', () => {
             const val = this.input.value;
-            logEvent('SenderModel: Пытаюсь оптравить данные', 1);
+            logEvent('SenderModel: Пытаюсь отправить данные', 1);
             store.dispatch({
                 type: 'SEND_DATA',
                 data: val
