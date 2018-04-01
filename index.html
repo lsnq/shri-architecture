@@ -4,22 +4,18 @@
         <meta charset="utf-8">
         <title>Архитектура. ШРИ-2018</title>
         <link rel="stylesheet" href="index.css">
-        
     </head>
     <body>
-        <h1>Архитектура приложения</h1>
-        <div class="view-stub">
-            <div class="view-stub__input-block">
-                <input class="view-stub__input"/>
-                <button class="view-stub__apply">Отправить на сервер</button>
+        <div class="container">
+            <h1>Архитектура приложения</h1>
+            <div class="view-stub">
+                <div class="view-stub__input-block">
+                    <input class="view-stub__input"/>
+                    <button class="view-stub__apply">Отправить на сервер</button>
+                </div>
+                <p class="view-stub__label"> Здесь появится ответ сервера</p>
             </div>
-            <p class="view-stub__label"> Здесь появится ответ сервера</p>
-        </div>
-        <div class="log">
-            Сюда можно выносить лог
-        </div>
-        <div id="root">
-            Root
+            <div class="log"></div>
         </div>
         <script async type="text/javascript" src="bundle.js"></script>
     </body>
