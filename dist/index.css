@@ -1,21 +1,33 @@
 body 
 {
     font-family: Arial, sans-serif;
+    margin: 0;
 }
 
-.view-stub
+input, button
 {
-    width: 50%;
+    outline: none;
+}
+
+.container
+{
+    margin: 0 auto;
+    padding: 2em;
+    max-width: 920px;
 }
 
 .view-stub__input-block {
     margin-bottom: 10px;
+    display: flex;
 }
 
 .view-stub__input {
-    padding: 2px 3px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    font-size: 1em;
     line-height: 28px;
-    width: 300px;
+    padding: 2px 3px;
+    width: 70%;
 }
 
 .view-stub__apply {
@@ -27,20 +39,37 @@ body
     border-radius: 3px;
     border: 1px solid black;
     margin-left: 10px;
+    width: calc(30% - 10px);
 }
 
 .view-stub__label {
-    width: 483px;
     background-color: #ddd;
+    border-radius: 3px;
     color: black;
-    padding: 10px 5px;
+    padding: 0.5em 1em;
     line-height: 28px;
 }
 
+.view-stub__label span
+{
+    margin-right: 10px;
+}
+
 .log {
-    width: 483px;
     background-color: #eee;
+    border-radius: 3px;
     color: black;
-    padding: 10px 5px;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 13px;
+    padding: 0.5rem 1rem;
     line-height: 28px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 237px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }

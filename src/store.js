@@ -1,41 +1,57 @@
+import {logEvent} from "./utils";
+
+/** Глобальный класс хранилища. */
 class Store {
     constructor() {
         this.state = {};
         this.listeners = [];
-        console.log('store initiated');
+        logEvent('Store: Хранилище Store инициализировано');
     }
-
+    /**
+     *
+     * @param {Model} listener
+     */
     subscribe(listener) {
+        if (typeof listener.setState !== 'function') {
+            throw new Error('Подписчик должен уметь подписываться');
+        }
         this.listeners = [...this.listeners, listener];
     }
 
     dispatch(payload) {
+        logEvent(`Store: Вызван диспетчер ${payload.type}`);
+        let name;
         switch (payload.type) {
             case 'SEND_DATA':
-                this.setState('send', payload.data);
-                break;
-            case 'LOG_DATA':
-                this.setState('log', [...this.state['log'], payload.data]);
+                name = 'sender';
                 break;
             case 'RECEIVE_DATA':
-                this.setState('send', payload.data);
+                name = 'receiver';
                 break;
             default:
-                break;
+                return false;
         }
-
-        this.listeners.forEach((listener) => {
-            listener.setState(this.state)
-        })
+        if (this.getState(name) !== payload.data) {
+            this.setState(name, payload.data);
+            logEvent(`Dispatch: Отправляю новое состояние подписчикам`);
+            this.listeners.forEach((listener) => {
+                listener.setState(this.state)
+            });
+        } else {
+            logEvent('Store: Данные не были изменены. Ничего не происходит')
+        }
+        return this.getState();
     }
 
     setState(model, value) {
+        logEvent(`Dispatch: Обновляю ${model}`);
         this.state[model] = value;
     }
 
-    getState() {
-        return this.state;
+    getState(name) {
+        return name ? this.state[name] : this.state;
     }
 }
 
-export const store = new Store({});
+/** Экспортирую инстанс хранилища */
+export const store = new Store();
